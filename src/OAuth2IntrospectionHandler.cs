@@ -119,7 +119,7 @@ namespace IdentityModel.AspNetCore.OAuth2Introspection
 
                 if (response.IsError)
                 {
-                    _logger.LogError("Error returned from introspection endpoint: " + response.Error);
+                    _logger.LogError("Error returned from introspection endpoint: {error} ({errorCode} - {httpErrorReason})", response.Error, response.HttpStatusCode, response.HttpErrorReason);
                     return await ReportNonSuccessAndReturn("Error returned from introspection endpoint: " + response.Error, Context, Scheme, Events, Options);
                 }
 
